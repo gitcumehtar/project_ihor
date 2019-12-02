@@ -1,4 +1,4 @@
-package com.mainacad.magento;
+package ihor.tests;
 
 import org.junit.After;
 import org.junit.Before;
