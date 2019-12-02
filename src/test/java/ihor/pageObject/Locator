@@ -1,0 +1,38 @@
+1) Check items counter
+yourLanguage_xpath = //select[@id='select-language']                            //use WebDriver.select
+home_and_decor_xpath = //a[@class='level0 has-children'][contains(text(),'Home & Decor')]
+    |
+    electronics-xpath = //a[contains(text(),'Electronics')]
+        |
+        show_as_list_xpath = (//a[@class='list'])[1]
+            |
+            show_selection-xpath = (//select[@title='Results per page'])[1]     //use WebDriver.select
+                |
+                product_in_list_xpath = //div[@class='product-shop']            //use findElements to generate list (12 items)
+                                or     //div[@class='product-primary']
+
+2) Check "Show" select
+                next_page_arrow_xpath = //div[@class='toolbar-bottom']//a[@class='next i-next'] // use as while (next_page_arrow_xpath.isVisible){...}
+
+3) Check Sort By
+            select_by_xpath = //select[@title='Sort By']                     //use WebDriver.select
+            |
+            item_price_xpath = //span[@class='regular-price']
+                               //div[@class='price-box']
+
+4) Check Price filter
+            price_selection_xpath = (//a/span[@class='price']//..)[1]
+
+5) Check add to Wishlist
+account-xpath = //span[@class='label'][(contains(text(),'Account'))]
+    |
+    logIn_xpath = //div[@class='links']//a[@title='Log In']
+            |
+            email_address_xpath = //input[@type='email'][@title='Email Address']
+            |
+            password_xpath = //input[@type='password'][@title='Password']
+            |
+            button_login_xpath = //button[@title='Login']
+
+
+
