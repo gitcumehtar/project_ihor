@@ -1,0 +1,13 @@
+<suite name="TestSuite" thread-count="1" parallel="classes">
+    <test name="testSuite">
+    <classes>
+        <class name="ihor.tests.ItemsCounterTest"/>
+        <class name="ihor.tests.SortByTest"/>
+        <class name="ihor.tests.PriceFilterTest"/>
+        <class name="ihor.tests.AddToWishlistTest"/>
+        <class name="ihor.tests.SalePageTest"/>
+        <class name="ihor.tests.ShowSelectTest"/>
+
+    </classes>
+    </test>
+</suite>

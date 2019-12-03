@@ -10,12 +10,12 @@ import static ihor.DriverManager.killDriver;
 public class BaseTest {
 
     @BeforeClass
-    public void setupPage(){
+    public void openPage(){
         getDriver().get("http://magento.mainacad.com/index.php/english/");
     }
 
     @AfterClass
-    public void tearDown(){
+    public void closePage(){
         killDriver();
     }
 }
