@@ -11,21 +11,17 @@ public class AddToWishlistTest extends BaseTest {
 
         mainPage.setLanguage(MainPage.Language.AUTOMATION)
                 .clickAccount()
-                .clickLogIn()
-                .fillEmailField("cumehtar@gmail.com")
-                .fillPasswordField("qwerty")
-                .clickLoginbtn()
-                .focusHomeAndDecorMenu()
-                .clickOnElectronicsItem()
-                .clickShowAsList()
-                .clickShowDropDown("25");
+                .clickLogIn();
+                //.fillEmailField("cumehtar@gmail.com")
+                //.fillPasswordField("qwerty")
+                //.clickLoginbtn()
+                //.focusHomeAndDecorMenu()
+                //.clickOnElectronicsItem()
+                //.clickShowAsList()
+                //.clickShowDropDown("25");
         //TODO: chooseRandomItem{}
         //TODO: clickAddToWish()
         //TODO: check WISHLIST
     }
 }
 
-
-
-
-}

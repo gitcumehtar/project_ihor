@@ -19,6 +19,3 @@ public class PriceFilterTest extends BaseTest {
     }
 }
 
-
-
-}
