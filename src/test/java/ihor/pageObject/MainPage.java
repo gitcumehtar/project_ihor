@@ -5,10 +5,6 @@ import ihor.elements.DropdownList;
 import io.qameta.allure.Step;
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
-import static ihor.DriverManager.getDriver;
 
 
 public class MainPage {
@@ -18,7 +14,7 @@ public class MainPage {
     private By electronicsSubMenu = By.xpath("//a[contains(text(),'Electronics')]");
 
     @Getter
-    private DropdownListownList LanguageDropDown = new DropdownList()ownList(languageDropDownLst, "Language dropdown list");
+    private DropdownList LanguageDropDown = new DropdownList(languageDropDownLst, "Language dropdown list");
 
     @Getter
     private Button HomeAndDecor = new Button(homeAndDecorBtn, "HOME&DECOR");
@@ -46,7 +42,7 @@ public class MainPage {
 
     @Step
     public MainPage setLanguage(Language language) {
-        getLanguageDropDown().select(language.toString());
+        getLanguageDropdown().select(language.toString());
         return this;
     }
 
@@ -59,9 +55,9 @@ public class MainPage {
     //Q1: Is it correct? - class will have giant num of methods.
     //Q2: How to call Electronics only in Home & Decor context --> clickHomeAndDecorMenu().selectItem("Electronics")
 
-    public Electronics clickOnElectronicsItem() {
+    public ElectronicsPage clickOnElectronicsItem() {
         getElectronicsSubMenu().click();
-        return new Electronics();
+        return new ElectronicsPage();
     }
 
 
