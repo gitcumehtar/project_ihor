@@ -1,5 +1,6 @@
 package ihor.pageObject;
 
+import ihor.elements.BaseElement;
 import ihor.elements.Button;
 import ihor.elements.DropdownList;
 import io.qameta.allure.Step;
@@ -7,39 +8,37 @@ import lombok.Getter;
 import org.openqa.selenium.By;
 
 public class MainPage {
-    private By languageDropDownLst = By.xpath("//select[@id='select-language']");
+    private By languageMenu = By.xpath("//select[@id='select-language']");
     private By homeAndDecorBtn = By.xpath(" //a[@class='level0 has-children'][contains(text(),'Home & Decor')]");
-    private By electronicsSubMenu = By.xpath("//a[contains(text(),'Electronics')]");
+    private By electronicsMenu = By.xpath("//a[contains(text(),'Electronics')]");
     private By accountBtn = By.xpath("//span[@class='label'][(contains(text(),'Account'))]");
-    private By logInBtn = By.xpath("//div[@class='links']//a[@title='Log In']");
+    private By loginBtn = By.xpath("//div[@class='links']//a[@title='Log In']");
     private By saleBtn = By.xpath("//a[contains(text(),'Sale')]");
 
     @Getter
-    private DropdownList LanguageDropDown = new DropdownList(languageDropDownLst, "Language dropdown list");
+    DropdownList LanguageDropdown = new DropdownList(languageMenu, "Language dropdown list");
 
     @Getter
-    private Button HomeAndDecor = new Button(homeAndDecorBtn, "Main menu HOME&DECOR");
+    Button HomeAndDecor = new Button(homeAndDecorBtn, "Main menu HOME&DECOR");
 
     @Getter
-    private Button ElectronicsSubMenu = new Button(electronicsSubMenu, "HOME&DECOR - Electronics");
+    Button ElectronicsSubMenu = new Button(electronicsMenu, "HOME&DECOR - Electronics");
 
     @Getter
-    private Button Account = new Button(accountBtn, "ACCOUNT button");
+    Button Account = new Button(accountBtn, "ACCOUNT button");
 
     @Getter
-    private Button Login = new Button(logInBtn, "ACCOUNT -> LogIn button");
+    Button Login = new Button(loginBtn, "ACCOUNT -> LogIn button");
 
     @Getter
-    private Button Sale = new Button(saleBtn, "Main menu SALE");
+    Button Sale = new Button(saleBtn, "Main menu SALE");
 
 
-    // enums for Your Language menu
     public enum Language {
         AUTOMATION("Automation"),
         ENGLISH("English");
 
         private String text;
-
         Language(String text) {
             this.text = text;
         }
@@ -75,7 +74,6 @@ public class MainPage {
     }
 
     @Step
-    //TODO: Q: Move this to AbstractPage?
     public MainPage clickAccount(){
         getAccount().click();
         return this;

@@ -8,7 +8,6 @@ import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import ihor.helpers.StringProcessor;
 import org.testng.Assert;
 
 import java.util.List;
@@ -27,7 +26,7 @@ public class ElectronicsPage extends AbstractPage {
     private By item = By.xpath("//*[@id='products-list']/l");
     private By itemPrice = By.xpath("//div[@class='price-box']//span[@class='price']");
     private By priceSelection0_999 = By.xpath("(//a/span[@class='price']//..)[1]");
-    private By priceSelection1000above = By.xpath(("//a/span[@class='price']//..)[4]");
+    private By priceSelection1000above = By.xpath("//a/span[@class='price']//..)[4]");
 
     @Getter
     private Button ShowAsList = new Button(showAsListBtn, "Show as list");
@@ -89,7 +88,7 @@ public class ElectronicsPage extends AbstractPage {
         do {
             if (pageNumber != 1)
                 getNextPgSmallArrowBtn().click();
-//Counts items on the page
+            //Counts items on the page
             int numberOfItems = getDriver().findElements(item).size();
             if (getNextPgSmallArrowBtn().isExists(1)) {
                 Assert.assertEquals(numberOfItems, expectedItems,
@@ -104,13 +103,14 @@ public class ElectronicsPage extends AbstractPage {
     }
 
     public enum SortBy {
-        POSITION('Position'),
-        NAME('Name'),
-        PRICE(&quot;Price&quot;);
+        POSITION("Position"),
+        NAME("Name"),
+        PRICE("Price");
         private String text;
         SortBy(String text) {
             this.text = text;
         }
+
         @Override
         public String toString() {
             return text;
@@ -122,30 +122,26 @@ public class ElectronicsPage extends AbstractPage {
     }
     // Check prices sorted from low to high
     public void checkSortedPrices() {
-        List&lt;WebElement&gt; eltList = getDriver().findElements(itemPrice);
-        for (int i = 0; i &lt; eltList.size() - 1; i++) {
+        List<WebElement> eltList = getDriver().findElements(itemPrice);
+        for (int i = 0; i < eltList.size() - 1; i++) {
             double priceCurrent =
-                    StringProcessor.stringToDouble(eltList.get(i).getText());
-            double priceNext = StringProcessor.stringToDouble(eltList.get(i +
-                    1).getText());
-            Assert.assertTrue(priceNext &gt; priceCurrent,
-                    String.format(&quot;Expect price %s of next item bigger than
-            price %s of current item&quot;, priceNext, priceCurrent));
+                    Double.parseDouble(eltList.get(i).getText());
+            double priceNext = Double.parseDouble(eltList.get(i + 1).getText());
+            Assert.assertTrue(priceNext > priceCurrent,
+                    String.format("Expect price %s of next item bigger than price %s of current item", priceNext, priceCurrent));
         }
     }
-    //Check prices &lt; 100
+    //Check prices < 100
     public void checkPricesValues() {
-        List&lt;WebElement&gt; eltList =
-                getDriver().findElements(priceSelection0_999);
+        List <WebElement> eltList = getDriver().findElements(priceSelection0_999);
         for (WebElement e : eltList) {
-            double price = StringProcessor.stringToDouble(e.getText());
-            Assert.assertTrue(price &lt; 100.00, String.format(&quot;Price %s less
-            than 100&quot;, price));
+            double price = Double.parseDouble(e.getText());
+            Assert.assertTrue(price < 100.00, String.format("Price %s less than 100", price));
         }
     }
     public ElectronicsPage addRandomProductToWishList(){
         Random randomGenerator = new Random();
-        List&lt;WebElement&gt; weList = getDriver().findElements(item);
+        List <WebElement> weList = getDriver().findElements(item);
         int numOfItems = weList.size();
         int i = randomGenerator.nextInt(numOfItems);
 
