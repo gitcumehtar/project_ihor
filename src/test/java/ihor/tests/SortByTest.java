@@ -15,7 +15,7 @@ public class SortByTest extends BaseTest {
                 .clickOnElectronicsItem()
                 .clickShowAsList()
                 .clickShowDropDown("25")
-                .setSortBy(ElectronicsPage.SortBy.PRICE)
+                //.setSortBy(ElectronicsPage.SortBy.PRICE)
                 .checkSortedPrices();
 
     }

@@ -116,10 +116,10 @@ public class ElectronicsPage extends AbstractPage {
             return text;
         }
     }
-    public ElectronicsPage setSortBy(SortBy SortBy) {
-        SortBy.select(SortBy.toString());
-        return this;
-    }
+//    public ElectronicsPage setSortBy(SortBy SortBy) {
+//        SortBy.select(SortBy.toString());
+//        return this;
+//    }
     // Check prices sorted from low to high
     public void checkSortedPrices() {
         List<WebElement> eltList = getDriver().findElements(itemPrice);
