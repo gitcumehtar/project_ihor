@@ -19,7 +19,7 @@ public class DriverManager {
     }
 
     private static void initDriver() {
-        System.setProperty("webdriver.chrome.driver", "src\\main\\java\\resources\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\drivers\\chromedriver.exe");
         threadDriver.set(new ChromeDriver());
 
         threadDriver.get().manage().window().fullscreen();
