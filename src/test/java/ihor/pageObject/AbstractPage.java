@@ -26,15 +26,4 @@ public class AbstractPage {
         ((JavascriptExecutor)getDriver()).executeScript("document.getElementById('close-fixedban').click()");
     }
 
-    @Step
-    public MainPage clickAccount(){
-        Account.click();
-        return new MainPage();
-    }
-
-    @Step
-    public LoginPage clickLogIn(){
-        Login.click();
-        return new LoginPage();
-    }
 }

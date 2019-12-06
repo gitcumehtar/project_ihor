@@ -12,6 +12,8 @@ public class MainPage {
     private By homeAndDecorBtn = By.xpath(" //a[@class='level0 has-children'][contains(text(),'Home & Decor')]");
     private By electronicsMenu = By.xpath("//a[contains(text(),'Electronics')]");
     private By saleBtn = By.xpath("//a[contains(text(),'Sale')]");
+    private By accountBtn = By.xpath("//span[@class='label'][(contains(text(),'Account'))]");
+    private By loginBtn = By.xpath("//div[@class='links']//a[@title='Log In']");
 
     @Getter
     DropdownList LanguageDropdown = new DropdownList(languageMenu, "Language dropdown list");
@@ -24,6 +26,12 @@ public class MainPage {
 
     @Getter
     Button Sale = new Button(saleBtn, "Main menu SALE");
+
+    @Getter
+    private Button Account = new Button(accountBtn, "Account Button");
+
+    @Getter
+    private Button Login = new Button(loginBtn, "Account to Login Button");
 
 
     public enum Language {
@@ -64,5 +72,18 @@ public class MainPage {
         Sale.click();
         return new SalePage();
     }
+
+    @Step
+    public MainPage clickAccount(){
+        Account.click();
+        return new MainPage();
+    }
+
+    @Step
+    public LoginPage clickLogIn(){
+        Login.click();
+        return new LoginPage();
+    }
+
 
 }
