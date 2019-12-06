@@ -11,8 +11,8 @@ import static ihor.DriverManager.getDriver;
 
 public class AbstractPage {
     protected Assertion softAssert = new Assertion();
-    private By accountBtn = By.xpath("//span...");
-    private By loginBtn = By.xpath("//div...");
+    private By accountBtn = By.xpath("//span[@class='label'][(contains(text(),'Account'))]");
+    private By loginBtn = By.xpath("//div[@class='links']//a[@title='Log In']");
 
     @Getter
     private Button Account = new Button(accountBtn, "Account Button");
@@ -26,4 +26,15 @@ public class AbstractPage {
         ((JavascriptExecutor)getDriver()).executeScript("document.getElementById('close-fixedban').click()");
     }
 
+    @Step
+    public MainPage clickAccount(){
+        Account.click();
+        return new MainPage();
+    }
+
+    @Step
+    public LoginPage clickLogIn(){
+        Login.click();
+        return new LoginPage();
+    }
 }

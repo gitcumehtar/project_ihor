@@ -87,10 +87,10 @@ public class ElectronicsPage extends AbstractPage {
         int pageNumber = 1;
         do {
             if (pageNumber != 1)
-                getNextPgSmallArrowBtn().click();
+                NextPgSmallArrowBtn.click();
             //Counts items on the page
             int numberOfItems = getDriver().findElements(item).size();
-            if (getNextPgSmallArrowBtn().isExists(1)) {
+            if (NextPgSmallArrowBtn.isExists(1)) {
                 Assert.assertEquals(numberOfItems, expectedItems,
                         String.format("Expect %s items, but found %s items on page %s", expectedItems, numberOfItems, pageNumber));
             } else {
@@ -99,7 +99,7 @@ public class ElectronicsPage extends AbstractPage {
             }
 
             pageNumber++;
-        } while (getNextPgSmallArrowBtn().isExists(1));
+        } while (NextPgSmallArrowBtn.isExists(1));
     }
 
     public enum SortBy {
@@ -117,7 +117,7 @@ public class ElectronicsPage extends AbstractPage {
         }
     }
     public ElectronicsPage setSortBy(SortBy SortBy) {
-        getSortBy().select(SortBy.toString());
+        SortBy.select(SortBy.toString());
         return this;
     }
     // Check prices sorted from low to high
